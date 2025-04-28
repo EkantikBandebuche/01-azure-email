@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-nodedb-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nodedb-app
+  template:
+    metadata:
+      labels:
+        app: nodedb-app
+    spec:
+      containers:
+      - name: node-app
+        image: ekantikdocker/node-mongo-db:02
+        ports:
+        - containerPort: 3000
